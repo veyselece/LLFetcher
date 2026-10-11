@@ -1,60 +1,89 @@
 {
-    "manifest_version": 3,
-    "name": "LLFetcher 3.0+",
-    "version": "3.0.1",
-    "description":"Download LinkedIn Learning videos or media files, subtitle, playlist and course assets easily !",
-    "permissions":[
-      "scripting","storage",
-          "webNavigation","tabs","cookies",
-        "downloads", "nativeMessaging"
-    ],
-    "host_permissions":[
-      "https://www.linkedin.com/learning/*",
-      "http://localhost:5000/*",
-      "http://127.0.0.1:5000/*"
-    ],
-    
-    "background":{
-      "service_worker" : "src/background-scripts/background.js"
+  "manifest_version": 3,
+  "name": "LinkedIn Learning Türkçe — Öğrenme Arşivi",
+  "version": "3.0.2",
+  "description": "LLFetcher: lesson multi-select, improved course readability, subtitle warning, and batch controls.",
+  "permissions": [
+    "scripting",
+    "storage",
+    "webNavigation",
+    "tabs",
+    "cookies",
+    "downloads",
+    "nativeMessaging"
+  ],
+  "host_permissions": [
+    "https://www.linkedin.com/learning/*",
+    "http://localhost:5000/*",
+    "http://127.0.0.1:5000/*"
+  ],
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/main.js-loader-Bl9SHH-x.js",
+        "assets/auto-course-setup.js",
+        "assets/course-tools.js"
+      ],
+      "matches": [
+        "https://www.linkedin.com/learning/*",
+        "http://localhost:5000/*",
+        "http://127.0.0.1:5000/*"
+      ]
     },
-    "content_scripts": [
-        {
-          "js": ["src/content-scripts/main.js"],
-          "matches": ["https://www.linkedin.com/learning/*","http://localhost:5000/*",
-          "http://127.0.0.1:5000/*"]
-        }
-    ],
-    "options_ui": {
-      "page": ["src/option/index.html","src/content-scripts/inject/index.html"],
-      "open_in_tab": true
-    },
-    "icons": {
+    {
+      "matches": [
+        "https://www.linkedin.com/learning/*"
+      ],
+      "js": [
+        "assets/learning-api-fallback.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ],
+  "options_ui": {
+    "page": "src/option/index.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "logo/icon-16.png",
+    "19": "logo/icon-19.png",
+    "32": "logo/icon-32.png",
+    "38": "logo/icon-38.png",
+    "48": "logo/icon-48.png",
+    "128": "logo/icon-128.png"
+  },
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_icon": {
       "16": "logo/icon-16.png",
       "19": "logo/icon-19.png",
       "32": "logo/icon-32.png",
       "38": "logo/icon-38.png",
       "48": "logo/icon-48.png",
       "128": "logo/icon-128.png"
-    },
-    "action": { 
-      "default_popup": "src/popup/index.html",
-      "default_icon": {
-        "16": "logo/icon-16.png",
-        "19": "logo/icon-19.png",
-      "32": "logo/icon-32.png",
-        "38": "logo/icon-38.png",
-        "48": "logo/icon-48.png",
-        "128": "logo/icon-128.png"
-      }
-    },
-    "web_accessible_resources": [
-      {
-        "matches": [
-          "https://www.linkedin.com/*"
-        ],
-        "resources": [
-        ],
-        "use_dynamic_url": true
-      }
-    ]
-  }
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "http://127.0.0.1:5000/*",
+        "http://localhost:5000/*",
+        "https://www.linkedin.com/*"
+      ],
+      "resources": [
+        "assets/index-CZ1hE2dh.js",
+        "assets/waitForElm-BcNoclUa.js",
+        "assets/sendMessage-Clh2_OhT.js",
+        "assets/main.js-Cp-zW40G.js",
+        "assets/*",
+        "src/content-scripts/inject/index.html"
+      ],
+      "use_dynamic_url": false
+    }
+  ]
+}

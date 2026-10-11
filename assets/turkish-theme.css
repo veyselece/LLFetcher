@@ -1,0 +1,222 @@
+/* LinkedIn Learning Türkçe — Tailwind uyumlu görsel katman
+   Palet: Gece mürekkebi + adaçayı/deniz yeşili + sıcak kehribar. Harici kaynak gerekmez. */
+:root {
+  --lltr-ink: #132238;
+  --lltr-ink-2: #1f334d;
+  --lltr-teal: #087f72;
+  --lltr-teal-2: #0d9488;
+  --lltr-mint: #ccfbf1;
+  --lltr-amber: #f59e0b;
+  --lltr-coral: #f97316;
+  --lltr-surface: #ffffff;
+  --lltr-canvas: #f3f7f7;
+  --lltr-border: #d9e5e5;
+  --lltr-muted: #617286;
+  --lltr-radius: 16px;
+  --lltr-shadow: 0 8px 28px rgba(19, 34, 56, .08);
+  color-scheme: light;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  color: var(--lltr-ink) !important;
+  background: var(--lltr-canvas) !important;
+  letter-spacing: .005em;
+}
+button, input, select, textarea { font: inherit; }
+button, [role="button"], a { transition: color .16s ease, background-color .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease; }
+button:not(:disabled):hover, [role="button"]:not([aria-disabled="true"]):hover { transform: translateY(-1px); }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, a:focus-visible {
+  outline: 3px solid rgba(13, 148, 136, .32) !important; outline-offset: 2px;
+}
+/* popup */
+#popup { color: var(--lltr-ink); background: #f6faf9; min-height: 100%; }
+#popup::before {
+  content: var(--lltr-course-title, "Course Detail");
+  display: block; box-sizing: border-box; margin: 0 0 10px; padding: 16px 15px 14px;
+  color: #ecfdf5; font-size: 10px; font-weight: 800; letter-spacing: .15em;
+  background: linear-gradient(118deg, #132238 0%, #174b54 68%, #087f72 100%);
+  border-bottom: 3px solid var(--lltr-amber); box-shadow: 0 6px 18px rgba(19,34,56,.16);
+}
+.app-container { background: transparent !important; color: var(--lltr-ink) !important; padding: 12px 12px 16px !important; }
+.welcome-page { gap: 10px !important; padding-top: 4px !important; }
+.welcome-page > * { max-width: 100%; }
+.welcome-page .font-bold { font-family: inherit !important; color: var(--lltr-ink) !important; letter-spacing: -.025em; }
+.action-cnt, .btn-cnt { border: 1px solid var(--lltr-border); background: var(--lltr-surface); border-radius: 12px; padding: 10px !important; box-shadow: 0 2px 7px rgba(19,34,56,.035); }
+.action-cnt:hover, .btn-cnt:hover { border-color: #99d6cd; box-shadow: 0 7px 18px rgba(8,127,114,.09); }
+.app-container button, .app-container .btn, .app-container a.button {
+  border-radius: 10px !important; font-weight: 700 !important; border: 1px solid transparent;
+}
+.app-container .btn-primary, .app-container button[class*="btn-blue"] {
+  background: linear-gradient(135deg, var(--lltr-teal), #0f766e) !important; color: #fff !important;
+  box-shadow: 0 5px 12px rgba(8,127,114,.18);
+}
+.app-container .btn-primary:hover, .app-container button[class*="btn-blue"]:hover { background: #065f56 !important; }
+.app-container button:not(.btn-primary) { border-color: var(--lltr-border); }
+/* full-page options / download manager */
+body:has(#root) { background: var(--lltr-canvas) !important; }
+#root { min-height: 100vh; }
+#application-sidebar {
+  background: linear-gradient(180deg, #132238 0%, #172d42 54%, #174b54 100%) !important;
+  border-right: 1px solid rgba(255,255,255,.08) !important;
+  box-shadow: 8px 0 30px rgba(19,34,56,.08);
+}
+#application-sidebar, #application-sidebar * { color: #d9e8ed; }
+#application-sidebar a, #application-sidebar button {
+  border-radius: 10px !important; margin-top: 2px; color: #d9e8ed !important;
+}
+#application-sidebar a:hover, #application-sidebar button:hover,
+#application-sidebar [aria-current="page"], #application-sidebar .bg-gray-100 {
+  background: rgba(45,212,191,.15) !important; color: #99f6e4 !important;
+}
+#application-sidebar a svg, #application-sidebar button svg { color: #9bd7d1; }
+.download-manager, .queue-table, .queue-setup, .course-display {
+  border-color: var(--lltr-border) !important; border-radius: var(--lltr-radius) !important;
+}
+.download-manager { background: transparent !important; }
+.download-manager::before {
+  content: var(--lltr-course-title, "Course Detail");
+  display: block; margin: 0 0 22px; padding: 24px 28px 22px; border-radius: 0 0 20px 20px;
+  color: #f0fdfa; font-size: 12px; line-height: 1.5; font-weight: 900; letter-spacing: .18em;
+  background: radial-gradient(circle at 92% 12%, rgba(45,212,191,.28), transparent 26%), linear-gradient(120deg,#132238,#174b54 70%,#087f72);
+  box-shadow: 0 12px 26px rgba(19,34,56,.12); border-bottom: 4px solid var(--lltr-amber);
+}
+.download-manager .queue-table, .download-manager .queue-setup,
+.queue-table, .queue-setup, .course-display, .border.rounded-xl.shadow-sm {
+  background: var(--lltr-surface) !important; border: 1px solid var(--lltr-border) !important;
+  box-shadow: var(--lltr-shadow) !important; border-radius: var(--lltr-radius) !important;
+}
+.toolbar-man, .grid-toolbar, .explorer-toolbar { padding-bottom: 12px; }
+.statusbar-man { border-top: 1px solid var(--lltr-border) !important; box-shadow: 0 -5px 24px rgba(19,34,56,.06); }
+.status-bar-man-container { border-radius: 10px !important; }
+button, .btn, input[type="button"], input[type="submit"] {
+  border-radius: 10px !important; font-weight: 650;
+}
+button[class*="bg-blue"], .btn-blue, .btn-primary, button[class*="text-blue"] {
+  background-color: var(--lltr-teal) !important; border-color: var(--lltr-teal) !important; color: white !important;
+}
+button[class*="bg-blue"]:hover, .btn-blue:hover, .btn-primary:hover { background-color: #06665d !important; }
+button[class*="bg-red"], button[class*="text-red"] { --tw-text-opacity: 1; }
+input, select, textarea {
+  border-color: #cbd9dc !important; border-radius: 9px !important; background-color: #fff !important;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--lltr-teal-2) !important; box-shadow: 0 0 0 3px rgba(13,148,136,.10) !important; }
+table { border-collapse: separate; border-spacing: 0; }
+thead th { background: #edf5f4 !important; color: #496174 !important; font-size: 10px !important; font-weight: 800 !important; letter-spacing: .08em; }
+tbody tr:hover td { background: #f2fbf9 !important; }
+th, td { border-color: #e3eceb !important; }
+.course-display { align-items: center; }
+.course-display img, .thumbnail-container { border-radius: 10px !important; }
+.pager-container button { min-width: 30px; }
+.hs-overlay .flex.w-\[700px\] { border-radius: 18px !important; overflow: hidden; box-shadow: 0 24px 70px rgba(19,34,56,.24) !important; }
+.hs-overlay .flex.justify-between.items-center.py-3 { background: #f0f7f6; }
+/* Preserve a readable dark mode while keeping the new palette. */
+.dark body, body.dark, html.dark body { background: #0d1726 !important; color: #e4eef4 !important; color-scheme: dark; }
+.dark #popup { background: #101c2a !important; color: #e4eef4 !important; }
+.dark .app-container { color: #e4eef4 !important; }
+.dark .action-cnt, .dark .btn-cnt, .dark .queue-table, .dark .queue-setup,
+.dark .course-display, .dark .border.rounded-xl.shadow-sm { background: #172638 !important; border-color: #2d4355 !important; }
+.dark .welcome-page .font-bold { color: #e4eef4 !important; }
+.dark input, .dark select, .dark textarea { background: #101c2a !important; color: #e4eef4 !important; border-color: #385064 !important; }
+.dark thead th { background: #1d3445 !important; color: #cde2e5 !important; }
+.dark tbody tr:hover td { background: #193a40 !important; }
+@media (max-width: 600px) {
+  .download-manager::before { padding: 18px 16px; margin-bottom: 14px; }
+  .queue-table, .queue-setup { padding: 14px !important; }
+}
+
+
+/* 3.0.6 okunaklılık ve form düzeltmeleri */
+html.light, html:not(.dark) { color-scheme: light; }
+html:not(.dark) body, html:not(.dark) #root, html:not(.dark) #popup { color: #1f3044 !important; }
+html:not(.dark) #root [class~="text-gray-100"],
+html:not(.dark) #root [class~="text-gray-200"],
+html:not(.dark) #root [class~="text-gray-300"],
+html:not(.dark) #root [class~="text-slate-100"],
+html:not(.dark) #root [class~="text-slate-200"],
+html:not(.dark) #root [class~="text-slate-300"],
+html:not(.dark) #root [class~="text-white"]:not(button):not(a) { color: #26384c !important; }
+html:not(.dark) #root [class~="text-gray-400"], html:not(.dark) #root [class~="text-slate-400"] { color: #4b6075 !important; }
+html:not(.dark) #root #application-sidebar,
+html:not(.dark) #root #application-sidebar * { color: #d9e8ed !important; }
+html:not(.dark) #root table td, html:not(.dark) #root table th,
+html:not(.dark) #root label, html:not(.dark) #root p { color: #25384d; }
+html:not(.dark) #root thead th { color: #31485e !important; }
+html:not(.dark) #root table td { color: #293e54 !important; }
+/* Tailwind'in appearance:none kuralı bazı temalarda işaretli kutuyu görünmez bırakabiliyor. */
+html:not(.dark) input[type="checkbox"], html:not(.dark) input[type="radio"] {
+  -webkit-appearance: auto !important; appearance: auto !important; accent-color: #087f72 !important;
+  width: 16px !important; height: 16px !important; min-width: 16px !important; min-height: 16px !important;
+  padding: 0 !important; background: transparent !important; border: 1px solid #64788a !important;
+  border-radius: 3px !important; cursor: pointer !important; opacity: 1 !important; pointer-events: auto !important;
+}
+html:not(.dark) input[type="checkbox"]:focus-visible, html:not(.dark) input[type="radio"]:focus-visible { outline: 3px solid rgba(8,127,114,.3) !important; outline-offset: 2px; }
+html:not(.dark) label:has(input[type="checkbox"]), html:not(.dark) label:has(input[type="radio"]) { cursor: pointer; }
+html.dark input[type="checkbox"], html.dark input[type="radio"] { accent-color: #2dd4bf !important; opacity: 1 !important; pointer-events: auto !important; }
+
+/* 3.0.9 contrast and language-picker improvements */
+:root { color-scheme: light; }
+body, #root, #popup { color: #1f2937; }
+label, p, span, td, th, button, input, select, textarea { text-shadow: none; }
+#llf-language-picker { color: #fff !important; }
+#llf-language-picker span { color: #fff !important; font-weight: 600; }
+#llf-language-picker select { color: #172033 !important; background: #fff !important; }
+
+/* 3.1.5: compact language selector in the popup's top banner */
+#llf-language-picker { top: 10px !important; right: 10px !important; bottom: auto !important; }
+#llf-language-picker span { font-size: 10px !important; color: #fff !important; }
+#llf-language-picker select { max-width: 82px !important; padding: 3px 4px !important; }
+
+/* 3.1.6 localized title */
+:root { --lltr-course-title: "Course Detail"; }
+
+
+/* 3.0.2 — Course detail readability */
+.course-description,
+[class*="description"],
+[class*="Description"],
+[class*="course-detail"] p,
+[class*="courseDetail"] p {
+  color: #dce7f4 !important;
+  line-height: 1.65 !important;
+}
+[class*="course-detail"] a,
+[class*="courseDetail"] a {
+  color: #7dd3fc !important;
+}
+.lltr-select-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 14px;
+  color: #e5edf7;
+  font: 12px/1.4 system-ui, sans-serif;
+}
+.lltr-select-tools button {
+  border: 1px solid #41536b;
+  background: #1e293b;
+  color: #f8fafc;
+  border-radius: 8px;
+  padding: 8px 11px;
+  cursor: pointer;
+}
+.lltr-select-tools button:disabled { opacity: .55; cursor: wait; }
+.lltr-select-tools .lltr-muted { color: #b8c7d9; }
+.lltr-row-select {
+  width: 16px;
+  height: 16px;
+  accent-color: #0d9488;
+  cursor: pointer;
+}
+.lltr-transcript-warning {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  background: #fff7ed;
+  color: #9a3412 !important;
+  border: 1px solid #fdba74;
+  font: 11px/1.3 system-ui, sans-serif;
+  vertical-align: middle;
+}
